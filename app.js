@@ -1,3 +1,6 @@
+//var mongo = require('mongodb'); 
+//var mdbServer = mongo.Server('localhost', 27017, {'auto_reconnect' : true});
+
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 var Twitter = require('twitter');
@@ -20,6 +23,10 @@ MongoClient.connect(url, function(err, client) {
       client.close();
     });
   });
+
+  insertTweets(db, function() {
+      client.close();
+  });
 });
 
 //auth twitter
@@ -30,9 +37,24 @@ var client = new Twitter({
     access_token_secret: 'jZoJBszcd7JkJ88cXa80HC2BLkPNUfzkaKnIjPvL0T5md'
   });
 
-client.get('search/tweets', {q: 'fighterz'}, function(error, tweets, response) {
+//client.get('search/tweets', {q: 'fighterz'}, function(error, tweets, response) {
+//    console.log(tweets);
+//    db.tweets.findAndModify({
+//        query: {'id': 'data.id'},
+//        update: { $set: data},
+//        upsert: true,
+//        new: true
+//    })
+//});
+
+var client = client.get('search/tweets', {q: 'fighterz'}, function(error, tweets, response) {
     console.log(tweets);
  });
+
+ const insertTweets = function(db, callback){
+     const collection = db.collection('tweets');
+     collection.insertMany(client);
+ }
 
 
  /////////TESTS MONGODB/////////
