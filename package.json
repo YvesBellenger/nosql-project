@@ -1,0 +1,25 @@
+{
+  "name": "nosql-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongodb": "^3.1.0-beta4",
+    "oauth": "^0.9.15",
+    "twitter": "^1.7.1"
+  },
+  "description": "tweets",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YvesBellenger/nosql-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YvesBellenger/nosql-project/issues"
+  },
+  "homepage": "https://github.com/YvesBellenger/nosql-project#readme"
+}
